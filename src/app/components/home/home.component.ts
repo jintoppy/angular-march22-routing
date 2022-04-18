@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Book } from 'src/app/models/book';
+import { BookService } from 'src/app/book.service';
 
 @Component({
   selector: 'app-home',
@@ -7,19 +9,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  books: Book[] = [];
+  constructor(
+    private router: Router, 
+    private route: ActivatedRoute,
+    private bookService: BookService
+  ) { }
 
   ngOnInit(): void {
+    this.route.queryParamMap.subscribe((param: ParamMap) => {
+      const searchTxt = param.get('q');
+      if(searchTxt){
+        this.bookService.searchBook(searchTxt)
+          .subscribe((books: Book[]) => {
+            this.books = books;
+          });
+      }
+  
+    });
   }
 
-  onLogin(txt: string){
-    if(txt.includes('admin')){
-      this.router.navigateByUrl('/about');
-    }
-    else {
-      this.router.navigateByUrl('/contact-us');
-    }
+  onSearch(txt: string){
+    this.router.navigateByUrl(`/?q=${txt}`);
+
   }
 
 }

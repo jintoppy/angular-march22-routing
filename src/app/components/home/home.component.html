@@ -1,4 +1,12 @@
 <p>home works!</p>
 
-<input type="text" #myInput>
-<button (click)="onLogin(myInput.value)">Login</button>
+Query Books: <input type="text" #myInput>
+<button (click)="onSearch(myInput.value)">Search</button>
+
+<div class="output">
+    <div class="item" *ngFor="let book of books">
+        <h3>{{book.volumeInfo.title}}</h3>
+        <a [routerLink]="['/about', book.id]">View Details</a>
+    </div>
+
+</div>

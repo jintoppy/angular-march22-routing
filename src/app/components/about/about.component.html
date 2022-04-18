@@ -1,3 +1,8 @@
-<p>about works!</p>
+<div *ngIf="bookDetails">
+    <h1>{{bookDetails.volumeInfo.title}}</h1>
+    <p>
+        {{bookDetails.volumeInfo.description}}
+    </p>
+    <img height="200" [src]="bookDetails.volumeInfo.imageLinks.thumbnail" alt="">
+</div>
 
-<h1>Book Title: {{bookName}}</h1>

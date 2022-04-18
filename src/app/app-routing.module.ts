@@ -11,7 +11,7 @@ const routes: Routes = [
    pathMatch: 'full'
   },
   {
-    path: 'about/:bookName', //URL params
+    path: 'about/:bookId', //URL params
     component: AboutComponent
    },
    {
