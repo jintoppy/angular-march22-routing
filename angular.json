@@ -71,7 +71,8 @@
               "browserTarget": "basic-routing:build:production"
             },
             "development": {
-              "browserTarget": "basic-routing:build:development"
+              "browserTarget": "basic-routing:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

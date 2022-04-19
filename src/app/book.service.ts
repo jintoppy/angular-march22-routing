@@ -14,7 +14,7 @@ export class BookService {
     return this.http.get<Book>(`https://www.googleapis.com/books/v1/volumes/${bookId}`);
   }
 
-  searchBook(query:string) {
+  searchBook(query:string | null) {
     const url = `https://www.googleapis.com/books/v1/volumes?q=${query}`;
     return this.http.get<BookSearchResult>(url)
               .pipe(
@@ -22,4 +22,10 @@ export class BookService {
               )
 
   }
+
+  getUsers(){
+    return this.http.get('/api/users');
+  }
+
+
 }

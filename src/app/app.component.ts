@@ -9,4 +9,5 @@ export class AppComponent {
   title = 'basic-routing';
   book1Name = 'harry-potter';
   book2Name = 'abcd'
+  
 }
